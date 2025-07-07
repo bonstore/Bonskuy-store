@@ -76,26 +76,22 @@
     <label>Harga</label>
     <input type="text" id="harga" readonly>
 
-    <label>Followers Awal</label>
+    <label>Followers/Like/View Awal</label>
     <input type="text" id="followers" placeholder="Contoh: 120" required>
 
     <label>Metode Pembayaran</label>
     <select id="metode" required>
-      <option value="">-- Pilih --</option>
-      <option value="Qris">Qris</option>
-      <option value="Dana">Dana</option>
-      <option value="OVO">OVO</option>
-      <option value="GoPay">GoPay</option>
-      <option value="ShopeePay">ShopeePay</option>
+      <option value="Qris">QRIS</option>
+      <option value="Dana">DANA</option>
     </select>
 
-    <label>Username Sosmed</label>
-    <input type="text" id="username" placeholder="@username_kamu" required>
+    <label>Username/Link Profil</label>
+    <input type="text" id="username" placeholder="@username/Link" required>
 
     <button type="submit">ORDER VIA WHATSAPP</button>
   </form>
 
-  <footer>&copy; 2025 Bonskuy Store</footer>
+  <footer>&copy; BONSKUY STORE</footer>
 
   <script>
     const data = JSON.parse(localStorage.getItem('produkDipilih'));
@@ -115,7 +111,7 @@
       const metode = document.getElementById('metode').value;
       const username = document.getElementById('username').value;
 
-      const pesan = `🛒 *Pesanan Baru dari Bonskuy Store*\n\n📦 Produk: ${produk}\n💰 Harga: ${harga}\n👤 Username: ${username}\n📊 Followers Awal: ${followers}\n💳 Pembayaran: ${metode}\n\nSilakan diproses 🙏`;
+      const pesan = `🛒 *HALO ADMIN, MAU ORDER*\n\n📦 Produk: ${produk}\n💰 Harga: ${harga}\n👤 Username/Link: ${username}\n📊 Followers/Like/View Awal: ${followers}\n💳 Pembayaran: ${metode}\n\nSilakan diproses min 🙏`;
 
       const nomorAdmin = '6285141316926'; // GANTI dengan nomor WhatsApp kamu
       const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
