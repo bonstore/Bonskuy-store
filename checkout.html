@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout - Bonskuy Store</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #fff; }
-    h1 { text-align: center; color: #cc2c2c; }
-    form { max-width: 400px; margin: auto; }
-    label { font-weight: bold; margin-top: 15px; display: block; }
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #cc2c2c;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+    }
+
     input, select {
       width: 100%;
       padding: 10px;
@@ -15,7 +38,9 @@
       margin-bottom: 15px;
       border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 14px;
     }
+
     button {
       width: 100%;
       padding: 12px;
@@ -27,7 +52,17 @@
       border-radius: 8px;
       cursor: pointer;
     }
-    button:hover { background-color: #b02525; }
+
+    button:hover {
+      background-color: #b02525;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
@@ -42,7 +77,7 @@
     <input type="text" id="harga" readonly>
 
     <label>Followers Awal</label>
-    <input type="text" id="followers" placeholder="Contoh: 125" required>
+    <input type="text" id="followers" placeholder="Contoh: 120" required>
 
     <label>Metode Pembayaran</label>
     <select id="metode" required>
@@ -54,18 +89,19 @@
       <option value="ShopeePay">ShopeePay</option>
     </select>
 
-    <label>Username Sosial Media</label>
-    <input type="text" id="username" placeholder="@username_anda" required>
+    <label>Username Sosmed</label>
+    <input type="text" id="username" placeholder="@username_kamu" required>
 
     <button type="submit">ORDER VIA WHATSAPP</button>
   </form>
 
+  <footer>&copy; 2025 Bonskuy Store</footer>
+
   <script>
-    // Ambil data dari localStorage
     const data = JSON.parse(localStorage.getItem('produkDipilih'));
     if (!data) {
-      alert('Silakan pilih produk dulu.');
-      window.location.href = 'produk.html';
+      alert('Silakan pilih produk dari halaman utama.');
+      window.location.href = 'index.html';
     } else {
       document.getElementById('produk').value = data.nama;
       document.getElementById('harga').value = 'Rp ' + data.harga.toLocaleString('id-ID');
@@ -73,18 +109,17 @@
 
     function kirimKeWA(e) {
       e.preventDefault();
-
-      const nama = document.getElementById('produk').value;
+      const produk = document.getElementById('produk').value;
       const harga = document.getElementById('harga').value;
       const followers = document.getElementById('followers').value;
       const metode = document.getElementById('metode').value;
       const username = document.getElementById('username').value;
 
-      const pesan = `🛒 *Pesanan Baru dari Bonskuy Store*\n\n📦 Produk: ${nama}\n💰 Harga: ${harga}\n👤 Username: ${username}\n📊 Followers Awal: ${followers}\n💳 Pembayaran: ${metode}\n\nSilakan diproses 🙏`;
+      const pesan = `🛒 *Pesanan Baru dari Bonskuy Store*\n\n📦 Produk: ${produk}\n💰 Harga: ${harga}\n👤 Username: ${username}\n📊 Followers Awal: ${followers}\n💳 Pembayaran: ${metode}\n\nSilakan diproses 🙏`;
 
-      const noAdmin = '6285141316926'; // GANTI dengan nomor WhatsApp kamu
-      const link = `https://wa.me/${noAdmin}?text=${encodeURIComponent(pesan)}`;
-      window.open(link, '_blank');
+      const nomorAdmin = '6285141316926'; // GANTI dengan nomor WhatsApp kamu
+      const linkWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
+      window.open(linkWA, '_blank');
     }
   </script>
 
